@@ -1,0 +1,15 @@
+---
+# main playbook file
+
+- name: ansible-tutorial (playbook)
+  hosts: localhost
+
+  tasks:
+    - name: force reboot, any node, even localhost
+      ansible.builtin.shell: sudo reboot -h now
+      tags:
+        - kamikaze_reboot
+
+
+
+...

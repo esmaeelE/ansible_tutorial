@@ -1,0 +1,26 @@
+---
+# main playbook file
+
+- name: ansible-tutorial (playbook)
+  hosts: localhost
+
+  tasks:
+    - name: Print Hello World
+      ansible.builtin.debug:
+        msg: Hello World
+
+    - name: Get IP Address
+      ansible.builtin.shell: hostname -I | awk '{print $1}' 
+      register: ip_address
+
+    - name: Show IP Address
+      ansible.builtin.debug:
+        var: ip_address.stdout
+
+    - name: Create file in user's home folder
+      ansible.builtin.file:
+        path: ~/hello_world.txt
+        state: touch
+      tags:
+        - create_file          
+...

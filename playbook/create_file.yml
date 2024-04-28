@@ -1,0 +1,14 @@
+---
+# main playbook file
+
+- name: ansible-tutorial (playbook)
+  hosts: localhost
+
+  tasks:
+    - name: Create file in user's home folder
+      ansible.builtin.file:
+        path: ~/hello_world.txt
+        state: touch
+      tags:
+        - create_file          
+...
